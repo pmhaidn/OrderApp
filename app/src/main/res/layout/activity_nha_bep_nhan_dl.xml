@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDD696"
+    >
+
+    <ListView
+        android:id="@+id/lvBanAn"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentTop="false"
+        android:layout_marginTop="10dp">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/btnBack1"
+        android:layout_width="314dp"
+        android:layout_height="62dp"
+        android:layout_alignTop="@+id/lvBanAn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="659dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:background="#9C27B0"
+        android:text="Quay lại" />
+
+
+</RelativeLayout>

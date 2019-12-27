@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/itTrangChu"
+            android:title="Bàn ăn"
+            android:textColor="#8545F5"
+            android:icon="@drawable/banan"
+            android:checked="true"
+            />
+
+        <item
+            android:id="@+id/itThucDon"
+            android:title="@string/thucdon"
+            android:textColor="#8545F5"
+            android:icon="@drawable/bookshelf"
+            />
+
+        <item
+            android:id="@+id/itNhanVien"
+            android:title="@string/nhanvien"
+            android:textColor="#8545F5"
+            android:icon="@drawable/businesspresentation"
+            />
+
+        <item
+            android:id="@+id/itNB"
+            android:title="Nhà bếp"
+            android:textColor="#8545F5"
+            android:icon="@drawable/bepp"
+            />
+        <item
+            android:id="@+id/logout"
+            android:textColor="#8545F5"
+            android:title="Đăng xuất"
+            android:icon="@drawable/logout"
+            />
+    </group>
+
+
+</menu>

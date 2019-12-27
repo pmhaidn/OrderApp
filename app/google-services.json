@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "976016089007",
+    "firebase_url": "https://smartorder-7210a.firebaseio.com",
+    "project_id": "smartorder-7210a",
+    "storage_bucket": "smartorder-7210a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976016089007:android:6d77068438bfc7c230595a",
+        "android_client_info": {
+          "package_name": "com.thanhnguyen.smartorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976016089007-frn7uo62mu42b8djc4j6jn0e6hnr28b4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thanhnguyen.smartorder",
+            "certificate_hash": "14155e457287be27a850add47c0148a00155f529"
+          }
+        },
+        {
+          "client_id": "976016089007-7haooi97330cm4bndmc7d3l1usc0ho63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4vhb66maDvBahqX7n7dutY2HzG1A9I_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976016089007-7haooi97330cm4bndmc7d3l1usc0ho63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
