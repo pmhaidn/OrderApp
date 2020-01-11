@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.thanhnguyen.smartorder.DTO.MonAnDTO;
@@ -75,7 +74,7 @@ public class AdapterHienThiDanhSachMonAn extends BaseAdapter{
             Uri uri = Uri.parse(hinhanh);
             Log.d("dsma",hinhanh.toString());
             loadimageinternet(hinhanh,viewHolderHienThiDanhSachMonAn.imHinhMonAn);
-            Toast.makeText(context, hinhanh, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, hinhanh, Toast.LENGTH_SHORT).show();
             //viewHolderHienThiDanhSachMonAn.imHinhMonAn.setImageURI(uri);
            // Toast.makeText(context, uri.toString(), Toast.LENGTH_SHORT).show();
         }

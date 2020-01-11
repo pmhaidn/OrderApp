@@ -28,7 +28,7 @@ public class ThemBanAnActivity extends AppCompatActivity implements View.OnClick
     EditText edTenThemBanAn;
     Button btnDongYThemBanAn;
     BanAnDAO banAnDAO;
-    DatabaseReference mData = FirebaseDatabase.getInstance("https://smartorder-13eb1.firebaseio.com/").getReference();
+    DatabaseReference mData = FirebaseDatabase.getInstance("https://smartorder-e3187.firebaseio.com/").getReference();
     String url="http://vanthanh97.000webhostapp.com/android/themba.php";
 
     @Override
@@ -91,7 +91,7 @@ public class ThemBanAnActivity extends AppCompatActivity implements View.OnClick
         String sTenBanAn = edTenThemBanAn.getText().toString();
         if(sTenBanAn != null || sTenBanAn.equals("")){
             boolean kiemtra = banAnDAO.ThemBanAn(sTenBanAn);
-            thembanan(url);
+            //thembanan(url);
             insertFireBase(sTenBanAn);
             Intent intent = new Intent();
             intent.putExtra("ketquathem",kiemtra);

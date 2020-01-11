@@ -45,7 +45,7 @@ public class HienThiDanhSachMonAnFragment extends Fragment {
         if(bundle !=  null){
             int maloai = bundle.getInt("maloai");
             maban = bundle.getInt("maban");
-            mamon=bundle.getInt("mamon");
+            mamon = bundle.getInt("mamon");
 
            monAnDTOList = monAnDAO.LayDanhSachMonAnTheoLoai(maloai);
 
@@ -101,7 +101,7 @@ public class HienThiDanhSachMonAnFragment extends Fragment {
                 if(kiemtra){
                     Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.xoathanhcong),Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.loi) + maban,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.loi) + mamon,Toast.LENGTH_SHORT).show();
                 }
                 ;break;
         }

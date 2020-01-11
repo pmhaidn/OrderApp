@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class NhaBepHienMon extends AppCompatActivity {
 
-    DatabaseReference mData = FirebaseDatabase.getInstance("https://smartorder-13eb1.firebaseio.com/").getReference();
+    DatabaseReference mData = FirebaseDatabase.getInstance("https://smartorder-e3187.firebaseio.com/").getReference();
     ArrayList<String> arrayList;
     ArrayAdapter adapter;
     String tendn ="";

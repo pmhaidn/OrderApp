@@ -37,7 +37,7 @@ public class ThanhToanActivity extends AppCompatActivity{
     BanAnDAO banAnDAO;
     int maban=0;
     String tenban = "x";
-    DatabaseReference mData = FirebaseDatabase.getInstance("https://smartorder-13eb1.firebaseio.com/").getReference();
+    DatabaseReference mData = FirebaseDatabase.getInstance("https://smartorder-e3187.firebaseio.com/").getReference();
     FragmentManager fragmentManager;
 
     @Override
@@ -84,6 +84,7 @@ public class ThanhToanActivity extends AppCompatActivity{
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mData.child("BanAn").child(tenban).removeValue();
                 boolean kiemtra = banAnDAO.XoaBanAnTheoMa(maban);
                 if(kiemtra){
                     Intent iTrangChu = new Intent(ThanhToanActivity.this, home.class);

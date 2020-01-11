@@ -69,7 +69,7 @@ public class ThemThucDonActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_themthucdon);
         mData= FirebaseDatabase.getInstance().getReference();
-//        final StorageReference reference=storage.getReferenceFromUrl("https://smartorder-13eb1.firebaseio.com/");
+//        final StorageReference reference=storage.getReferenceFromUrl("https://smartorder-e3187.firebaseio.com/");
 
 
         loaiMonAnDAO = new LoaiMonAnDAO(this);
@@ -169,7 +169,7 @@ public class ThemThucDonActivity extends AppCompatActivity implements View.OnCli
                     monAnDTO.setTenMonAn(tenmonan);
                     boolean kiemtra = monAnDAO.ThemMonAn(monAnDTO);
                     if(kiemtra){
-                        themthucdon(url);
+                        //themthucdon(url);
                         Toast.makeText(this,getResources().getString(R.string.themthanhcong),Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(this,getResources().getString(R.string.themthatbai),Toast.LENGTH_SHORT).show();
@@ -206,7 +206,7 @@ public class ThemThucDonActivity extends AppCompatActivity implements View.OnCli
         }else if(REQUEST_CODE_MOHINH == requestCode){
             if(resultCode == Activity.RESULT_OK && data !=null){
                 imHinhThucDon.setImageURI(data.getData());
-                StorageReference storageRef = storage.getReferenceFromUrl("gs://smartorder-13eb1.appspot.com");
+                StorageReference storageRef = storage.getReferenceFromUrl("gs://smartorder-e3187.appspot.com");
                 Calendar calendar= Calendar.getInstance();
                 StorageReference mountainsRef = storageRef.child("image"+ calendar.getTimeInMillis()+ ".png");
 

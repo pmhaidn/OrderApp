@@ -1,5 +1,6 @@
 package com.thanhnguyen.smartorder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +14,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.thanhnguyen.smartorder.DAO.NhanVienDAO;
 import com.thanhnguyen.smartorder.DAO.QuyenDAO;
 import com.thanhnguyen.smartorder.DTO.NhanVienDTO;
@@ -20,7 +28,9 @@ import com.thanhnguyen.smartorder.DTO.QuyenDTO;
 import com.thanhnguyen.smartorder.FragmentApp.DatePickerFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class dangky extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
@@ -38,7 +48,8 @@ public class dangky extends AppCompatActivity implements View.OnClickListener, V
     int landautien=0;
     List<QuyenDTO> quyenDTOList;
     List<String> dataAdapter;
-
+    String url="http://vanthanh97.000webhostapp.com/android/dk.php";
+    String urlsua="http://vanthanh97.000webhostapp.com/android/suanv.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +121,52 @@ public class dangky extends AppCompatActivity implements View.OnClickListener, V
 
     }
 
+    public void dangky(String url, final String maquyen) {
+        if(edTenDangNhapDK.length()!=0 && edMatKhauDK.length()!=0){
+            RequestQueue requestQueue = Volley.newRequestQueue(dangky.this);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.trim().equals("true")){
+                                Intent intent = new Intent(dangky.this,dangnhap.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(dangky.this, "Thêm nhân viên thất bại!", Toast.LENGTH_SHORT).show();
+                                edMatKhauDK.setText("");
+                                edreMK.setText("");
 
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Toast.makeText(dangky.this, "Kết nối máy chủ thất bại!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String,String> params = new HashMap<>();
+                    params.put("tendn",edTenDangNhapDK.getText().toString().trim());
+                    params.put("mk",edMatKhauDK.getText().toString().trim());
+                    params.put("gioitinh",sGioiTinh.trim());
+                    params.put("ngaysinh",edNgaySinhDK.getText().toString().trim());
+                    params.put("sdt",edSDTDK.getText().toString().trim());
+                    params.put("maquyen",maquyen.trim());
+                    return params;
+                }
+            };
+
+            requestQueue.add(stringRequest);
+        }else {
+            Toast.makeText(dangky.this,"Vui lòng nhập đầy đủ thông tin!",Toast.LENGTH_SHORT).show();
+        }
+
+    }
     private void DongYThemNhanVien(){
         String sTenDangNhap = edTenDangNhapDK.getText().toString();
         String sMatKhau = edMatKhauDK.getText().toString();
@@ -145,24 +201,71 @@ public class dangky extends AppCompatActivity implements View.OnClickListener, V
             if (landautien != 0){
                 //gán mặt định quyền nhân viên là admin
                 nhanVienDTO.setMAQUYEN(1);
+                //dangky(url, "1");
             }else {
                 //gán quyền bằng quyền mà admin khi chọn tạo nhân viên
                 int vitri = spinQuyen.getSelectedItemPosition();
                 int maquyen = quyenDTOList.get(vitri).getMaQuyen();
                 nhanVienDTO.setMAQUYEN(maquyen);
+                //dangky(url,String.valueOf(maquyen));
             }
 
             long kiemtra = nhanVienDAO.ThemNhanVien(nhanVienDTO);
             if(kiemtra != 0){
-                //Toast.makeText(dangky.this,getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
-                //Intent login = new Intent(dangky.this, dangnhap.class);
-                //startActivity(login);
+                Toast.makeText(dangky.this,getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
+                Intent login = new Intent(dangky.this, dangnhap.class);
+                startActivity(login);
             }else{
                 Toast.makeText(dangky.this,getResources().getString(R.string.themthatbai), Toast.LENGTH_SHORT).show();
             }
         }
     }
+    public void suanv(String urlsua) {
+        if(edTenDangNhapDK.length()!=0 && edMatKhauDK.length()!=0){
+            RequestQueue requestQueue = Volley.newRequestQueue(dangky.this);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlsua,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.trim().equals("true")){
+                                Intent intent = new Intent(dangky.this,dangnhap.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(dangky.this, "Thêm nhân viên thất bại!", Toast.LENGTH_SHORT).show();
+                                edMatKhauDK.setText("");
+                                edreMK.setText("");
 
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Toast.makeText(dangky.this, "Kết nối máy chủ thất bại!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String,String> params = new HashMap<>();
+                    params.put("tendn",edTenDangNhapDK.getText().toString().trim());
+                    params.put("mk",edMatKhauDK.getText().toString().trim());
+                    params.put("gioitinh",sGioiTinh.trim());
+                    params.put("ngaysinh",edNgaySinhDK.getText().toString().trim());
+                    params.put("sdt",edSDTDK.getText().toString().trim());
+                    params.put("maquyen",String.valueOf(maquyen).trim());
+                    return params;
+                }
+            };
+
+            requestQueue.add(stringRequest);
+        }else {
+            Toast.makeText(dangky.this,"Vui lòng nhập đầy đủ thông tin!",Toast.LENGTH_SHORT).show();
+        }
+
+    }
     private void SuaNhanVien(){
         String sTenDangNhap = edTenDangNhapDK.getText().toString();
         String sMatKhau = edMatKhauDK.getText().toString();
@@ -188,6 +291,7 @@ public class dangky extends AppCompatActivity implements View.OnClickListener, V
 
         boolean kiemtra = nhanVienDAO.SuaNhanVien(nhanVienDTO);
         if(kiemtra){
+            //suanv(urlsua);
             Toast.makeText(dangky.this,"Sửa thành công!",Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(dangky.this,getResources().getString(R.string.loi),Toast.LENGTH_SHORT).show();

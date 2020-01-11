@@ -46,7 +46,7 @@ public class ThemLoaiThucDonActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
         String sTenLoaiThucDon = edTenLoai.getText().toString();
         if(sTenLoaiThucDon != null || sTenLoaiThucDon.equals("")){
-            themloai(url);
+            //themloai(url);
             boolean kiemtra = loaiMonAnDAO.ThemLoaiMonAn(sTenLoaiThucDon);
             Intent iDuLieu = new Intent();
             iDuLieu.putExtra("kiemtraloaithucdon",kiemtra);
